@@ -6,10 +6,11 @@
     </div>
     <div v-else>
       <span class="time">{{ hours }}</span>
-      <span class="time">:</span>
+      <span class="time">小时</span>
       <span class="time">{{ minutes }}</span>
-      <span class="time">:</span>
+      <span class="time">分钟</span>
       <span class="time">{{ seconds }}</span>
+      <span class="time">秒</span>
     </div>
   </div>
 </template>
@@ -107,11 +108,11 @@ export default {
 }
 .time {
   color: #ffffff;
-  font-size: 100px;
+  font-size: 50px;
   font-family: "Microsoft YaHei";
   user-select: none;
 }
 .title {
-  font-size: 50px;
+  font-size: 40px;
 }
 </style> 
