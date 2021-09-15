@@ -15,16 +15,16 @@ jobs:
     # 步骤
     steps:
       # 将代码拷贝到虚机中
-      - name: checkout master
+      - name: Checkout master
         uses: actions/checkout@master
 
       # 安装依赖以及build
-      - name: install and build
+      - name: Install and Build
         run:
           npm install
           npm run build
 
-      - name: deploy
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 使用刚新建的secret
