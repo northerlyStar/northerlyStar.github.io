@@ -41,6 +41,15 @@
     <el-row>
       <el-button @click="setHeaders()">set header</el-button>
     </el-row>
+    <div>时间选择器</div>
+    <el-row>
+      <el-date-picker
+        v-model="dateTime"
+        type="datetime"
+        placeholder="选择日期时间"
+      >
+      </el-date-picker>
+    </el-row>
   </div>
 </template>
 
@@ -133,6 +142,8 @@ export default {
           value: "value",
         },
       ],
+      // 时间选择器
+      dateTime: null,
     };
   },
   mounted() {},

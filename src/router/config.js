@@ -10,7 +10,6 @@ import menu from '@/whim/menu'
 import git from '@/whim/gitPage'
 import countdown from '@/whim/countdown'
 import elementUI from '@/whim/elementUI'
-
 const route = [
   {
     path: '/',
