@@ -20,7 +20,7 @@ jobs:
 
       # 安装依赖以及build
       - name: Install and Build
-        run:
+        run: |
           npm install
           npm run build
 
