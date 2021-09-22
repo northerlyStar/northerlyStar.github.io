@@ -50,10 +50,15 @@ export default {
         if (item < current.getMonth() + 1) {
           delete obj[item];
         } else if (item == current.getMonth() + 1) {
+          // 比较日期
           for (const item1 of Object.keys(obj[item])) {
             if (item1 < current.getDate()) {
               delete obj[item][item1];
             }
+          }
+          // 删除空对象
+          if (Object.keys(obj[item]).length === 0) {
+            delete obj[item];
           }
         }
       }
