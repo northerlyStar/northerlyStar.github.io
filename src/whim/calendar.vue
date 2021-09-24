@@ -8,6 +8,14 @@
     </div>
     <!-- 日历主体 -->
     <div class="calendar">
+      <!-- 上月、下月切换按钮 -->
+      <div class="calendar_btn_group">
+        <div class="calendar_btn" @click="prevMonth">上月</div>
+        <div class="calendar_btn" style="width: 14rem">
+          {{ date.getFullYear() }}年{{ date.getMonth() + 1 }}月
+        </div>
+        <div class="calendar_btn" @click="nextMonth">下月</div>
+      </div>
       <!-- 日历表头 -->
       <div
         class="border_title"
@@ -300,10 +308,10 @@ export default {
     },
     // 寿星公式 (Y * D + C) - L
     formula() {
-      let y = new Date().getFullYear();
+      let y = this.date.getFullYear();
       let D = 0.2422;
       // 获取C值
-      let month = new Date().getMonth() + 1;
+      let month = this.date.getMonth() + 1;
       let C = [
         holiday.cOfSolarTerms[month * 2 - 2],
         holiday.cOfSolarTerms[month * 2 - 1],
@@ -355,6 +363,32 @@ export default {
         "闰月大小：",
         leap
       );
+    },
+    // 上月
+    prevMonth() {
+      // 超出范围 重置月份的时间
+      let month = this.date.getMonth();
+      if (month === 0) {
+        month = 12;
+      }
+      const date = new Date(
+        `${this.date.getFullYear()}-${month}-${this.date.getDate()}`
+      );
+      this.date = date;
+      this.d = this.formula();
+    },
+    // 下月
+    nextMonth() {
+      // 超出范围 重置月份的时间
+      let month = this.date.getMonth();
+      if (month === 11) {
+        month = -1;
+      }
+      const date = new Date(
+        `${this.date.getFullYear()}-${month + 2}-${this.date.getDate()}`
+      );
+      this.date = date;
+      this.d = this.formula();
     },
   },
   watch: {
@@ -475,6 +509,22 @@ export default {
   width: 49rem;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.calendar_btn_group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar_btn {
+  width: 7rem;
+  box-sizing: border-box;
+  padding: 0 2rem;
+  height: 4rem;
+  line-height: 4rem;
+  background-color: rgb(248, 248, 248);
+  color: rgb(0, 0, 0);
 }
 
 .eidt_switch {
