@@ -11,7 +11,7 @@
       <!-- 上月、下月切换按钮 -->
       <div class="calendar_btn_group">
         <div class="calendar_btn" @click="prevMonth">上月</div>
-        <div class="calendar_btn" style="width: 14rem; text-align: center">
+        <div class="calendar_btn" style="width: 14rem">
           {{ date.getFullYear() }}年{{ date.getMonth() + 1 }}月
         </div>
         <div class="calendar_btn" @click="nextMonth">下月</div>
@@ -525,6 +525,7 @@ export default {
   line-height: 4rem;
   background-color: rgb(248, 248, 248);
   color: rgb(0, 0, 0);
+  text-align: center;
 }
 
 .eidt_switch {
