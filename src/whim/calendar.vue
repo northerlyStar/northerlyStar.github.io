@@ -11,7 +11,7 @@
       <!-- 上月、下月切换按钮 -->
       <div class="calendar_btn_group">
         <div class="calendar_btn" @click="prevMonth">上月</div>
-        <div class="calendar_btn" style="width: 14rem">
+        <div class="calendar_btn" style="width: 14rem; text-align: center">
           {{ date.getFullYear() }}年{{ date.getMonth() + 1 }}月
         </div>
         <div class="calendar_btn" @click="nextMonth">下月</div>
