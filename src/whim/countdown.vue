@@ -30,7 +30,7 @@ export default {
     // 当天零点
     const currentDay = new Date(new Date().setHours(0, 0, 0, 0));
     // 节假日
-    const fDay = holiday.festival;
+    const fDay = JSON.parse(JSON.stringify(holiday.festival));
     // 获取下一个节日的日期
     const day = this.getNextFestival(currentDay, fDay);
     console.log(day);
