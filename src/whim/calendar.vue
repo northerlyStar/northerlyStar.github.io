@@ -265,6 +265,7 @@ export default {
     this.d = this.formula();
   },
   mounted() {
+    this.lunarCalendar();
     // 查询本地是否有日历的配置缓存
     this.checkCalendarConfigStorage();
     let that = this;
@@ -344,13 +345,8 @@ export default {
     lunarCalendar() {
       // 农历年 十六进制
       let lunar = holiday.lunarInfo[this.date.getFullYear() - 1900].toString(2);
-      // 不足十六位
-      if (lunar.length < 16) {
-        // 补足十六位
-        for (let i = lunar.length; lunar.length < 16; i++) {
-          lunar = "0" + lunar;
-        }
-      }
+      // 不足十六位，补足十六位
+      lunar = lunar.padStart(20, "0");
       // 取1-4位算闰月是哪月
       let ifLeap = parseInt(lunar.substring(lunar.length - 4), 2);
       // 5-16位各月份天数
@@ -361,7 +357,7 @@ export default {
         leap = holiday.lunarInfo[this.date.getFullYear() - 1900] + "";
       }
       console.log(
-        "十六进制：",
+        "二进制：",
         lunar,
         "闰月：",
         ifLeap,
